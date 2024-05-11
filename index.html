@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Intro section with dropdown navigation</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+
+  <nav>
+    <div class="nav-container">
+      <div class="header-logo">
+        <img src="images/logo.svg" alt="logo" >
+      </div>
+
+      <ul class="nav-links">
+        <li>
+          Features
+          <img src="images/icon-arrow-down.svg" class="arrow" alt="arrow">
+          <div class="dropdown-menu">
+            <p class="dropdown-content">
+              <img src="images/icon-todo.svg" alt="icon">
+              Todo List
+            </p>
+            <p class="dropdown-content">
+              <img src="images/icon-calendar.svg" alt="icon">
+              Calendar
+            </p>
+            <p class="dropdown-content">
+              <img src="images/icon-reminders.svg" alt="icon">
+              Reminders
+            </p>
+            <p class="dropdown-content">
+              <img src="images/icon-planning.svg" alt="icon">
+              Planning
+            </p>
+          </div>
+        </li>
+
+        <li>
+          Company
+          <img src="images/icon-arrow-down.svg" class="arrow" alt="arrow">
+          <div class="dropdown-menu">
+            <p class="dropdown-content">
+              History
+            </p>
+            <p class="dropdown-content">
+              Our Team
+            </p>
+            <p class="dropdown-content">
+              Blog
+            </p>
+          </div>
+        </li>
+
+        <li>Careers</li>
+        <li>About</li>
+      </ul>
+
+      <div class="buttons">
+        <button class="transparent-btn">Login</button>
+        <button class="outline-btn">Register</button>
+      </div>
+    </div>
+
+    <div class="mobile-menu-btn">
+      <img src="images/icon-menu.svg" alt="open menu">
+    </div>
+
+    <div class="mobile-menu">
+      <ul class="mobile-container">
+        <li>
+          Features
+          <img src="images/icon-arrow-down.svg" class="arrow" alt="arrow">
+
+          <div class="sub-menu">
+            <p class="sub-link">
+              <img src="images/icon-todo.svg" alt="icon">
+              Todo List
+            </p>
+            <p class="sub-link">
+              <img src="images/icon-calendar.svg" alt="icon">
+              Calendar
+            </p>
+            <p class="sub-link">
+              <img src="images/icon-reminders.svg" alt="icon">
+              Reminders
+            </p>
+            <p class="sub-link">
+              <img src="images/icon-planning.svg" alt="icon">
+              Planning
+            </p>
+          </div>
+        </li>
+
+        <li>
+          Company
+          <img src="images/icon-arrow-down.svg" class="arrow" alt="arrow">
+
+          <div class="sub-menu">
+            <p class="sub-link">
+              History
+            </p>
+            <p class="sub-link">
+              Our Team
+            </p>
+            <p class="sub-link">
+              Blog
+            </p>
+          </div>
+        </li>
+
+        <li>Careers</li>
+        <li>About</li>
+      </ul>
+
+      <div class="mobile-buttons">
+        <button class="transparent-btn">Login</button>
+        <button class="outline-btn">Register</button>
+      </div>
+    </div>
+
+  </nav>
+</header>
+
+<main>
+  <section>
+    <h1>
+      Make <br> remote work
+    </h1>
+
+    <p class="main-content">
+      Get your team in sync, no matter your location. Streamline processes, create team rituals, and watch productivity soar.
+    </p>
+
+    <button class="primary-btn">Learn more</button>
+
+    <div class="logo-list">
+      <img src="images/client-databiz.svg" alt="logo">
+      <img src="images/client-audiophile.svg" alt="logo">
+      <img src="images/client-meet.svg" alt="logo">
+      <img src="images/client-maker.svg" alt="logo">
+    </div>
+  </section>
+  <section>
+    <picture>
+      <source media="(max-width:800px)" srcset="images/image-hero-mobile.png">
+
+      <img src="images/image-hero-desktop.png" alt="hero" class="hero-img">
+    </picture>
+  </section>
+</main>
+
+<div class="overlay"></div>
+
+<script>
+const navLinks = document.querySelectorAll(".nav-links li");
+const menuBtn = document.querySelector(".mobile-menu-btn");
+const mobileMenu = document.querySelector(".mobile-menu");
+const overlay = document.querySelector(".overlay");
+const mobileLinks = document.querySelectorAll(".mobile-container li");
+
+menuBtn.addEventListener("click", () => {
+    const icon = document.querySelector(".mobile-menu-btn img");
+    menuBtn.classList.toggle("active-btn");
+    mobileMenu.classList.toggle("active-menu");
+    overlay.classList.toggle("active-menu");
+
+    if (menuBtn.classList.contains("active-btn")) {
+        icon.src = "images/icon-close-menu.svg";
+    } else {
+        icon.src = "images/icon-menu.svg";
+    }
+});
+
+navLinks.forEach((link) => {
+    const subMenu = link.querySelector(".dropdown-menu");
+    link.addEventListener("click", () => {
+      link.classList.toggle("active");
+      subMenu.classList.toggle("active-menu");
+    });
+});
+
+mobileLinks.forEach((link) => {
+    const subMenu = link.querySelector(".sub-menu");
+    link.addEventListener("click", () => {
+      link.classList.toggle("active");
+      subMenu.classList.toggle("active-menu");
+    });
+});
+</script>
+</body>
+</html>
